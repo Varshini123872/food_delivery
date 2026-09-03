@@ -1,0 +1,451 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f5f6f8;
+
+    min-height: 100vh;
+
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.orders-container {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.orders-container h1 {
+
+    text-align: center;
+
+    font-size: 32px;
+
+    color: #222;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-btn {
+
+    display: inline-block;
+
+    padding: 11px 20px;
+
+    margin-bottom: 25px;
+
+    background: #ffffff;
+
+    color: #333;
+
+    text-decoration: none;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.back-btn:hover {
+
+    background: #ff6b00;
+
+    color: white;
+
+    border-color: #ff6b00;
+}
+
+
+/* =========================
+   ORDER CARD
+========================= */
+
+.order-card {
+
+    background: #ffffff;
+
+    padding: 25px;
+
+    margin-bottom: 22px;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+.order-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   ORDER HEADER
+========================= */
+
+.order-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* =========================
+   ORDER NUMBER
+========================= */
+
+.order-header h2 {
+
+    color: #ff6b00;
+
+    font-size: 21px;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   ORDER DATE
+========================= */
+
+.date {
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-transform: capitalize;
+}
+
+
+/* =========================
+   PLACED
+========================= */
+
+.status.placed {
+
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+
+/* =========================
+   PROCESSING
+========================= */
+
+.status.processing {
+
+    background: #cfe2ff;
+
+    color: #084298;
+}
+
+
+/* =========================
+   OUT FOR DELIVERY
+========================= */
+
+.status.out-for-delivery {
+
+    background: #cff4fc;
+
+    color: #055160;
+}
+
+
+/* =========================
+   DELIVERED
+========================= */
+
+.status.delivered {
+
+    background: #d1e7dd;
+
+    color: #0f5132;
+}
+
+
+/* =========================
+   CANCELLED
+========================= */
+
+.status.cancelled {
+
+    background: #f8d7da;
+
+    color: #842029;
+}
+
+
+/* =========================
+   ORDER DETAILS
+========================= */
+
+.order-details {
+
+    line-height: 1.6;
+}
+
+
+.order-details p {
+
+    margin: 10px 0;
+
+    color: #555;
+
+    font-size: 15px;
+}
+
+
+.order-details strong {
+
+    color: #222;
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+.order-details .total {
+
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #eeeeee;
+
+    color: #222;
+
+    font-size: 19px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   NO ORDERS
+========================= */
+
+.no-orders {
+
+    background: #ffffff;
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5e5e5;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.no-orders h2 {
+
+    color: #333;
+
+    font-size: 24px;
+
+    margin-bottom: 12px;
+}
+
+
+.no-orders p {
+
+    color: #777;
+
+    font-size: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   START SHOPPING BUTTON
+========================= */
+
+.no-orders a {
+
+    display: inline-block;
+
+    padding: 12px 24px;
+
+    background: #ff6b00;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.no-orders a:hover {
+
+    background: #e65c00;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 25px 12px;
+    }
+
+
+    .orders-container {
+
+        width: 100%;
+    }
+
+
+    .orders-container h1 {
+
+        font-size: 26px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .back-btn {
+
+        font-size: 14px;
+
+        padding: 10px 16px;
+    }
+
+
+    .order-card {
+
+        padding: 18px;
+    }
+
+
+    .order-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .order-header h2 {
+
+        font-size: 18px;
+    }
+
+
+    .status {
+
+        padding: 7px 12px;
+
+        font-size: 12px;
+
+        white-space: nowrap;
+    }
+
+
+    .order-details p {
+
+        font-size: 14px;
+    }
+
+
+    .order-details .total {
+
+        font-size: 17px;
+    }
+}

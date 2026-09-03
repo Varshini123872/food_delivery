@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f5f7fa;
+}
+
+.success-container {
+    width: 450px;
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Success Icon */
+
+.success-icon {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #28a745;
+    color: white;
+
+    font-size: 48px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Heading */
+
+h1 {
+    color: #222;
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+/* Paragraph */
+
+p {
+    color: #666;
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+.message {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+/* Common Button */
+
+.home-btn,
+.orders-btn {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 12px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+/* Continue Shopping */
+
+.home-btn {
+    background: #ff6b00;
+    color: white;
+}
+
+.home-btn:hover {
+    background: #e65c00;
+    transform: translateY(-2px);
+}
+
+/* My Orders */
+
+.orders-btn {
+    background: #eeeeee;
+    color: #333;
+}
+
+.orders-btn:hover {
+    background: #dddddd;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 500px) {
+
+    .success-container {
+        width: 90%;
+        padding: 35px 25px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .success-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 38px;
+    }
+}

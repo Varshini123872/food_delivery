@@ -1,0 +1,72 @@
+v* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.back-btn {
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 25px;
+}
+
+.order-card {
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.header span {
+    background: #eee;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.order-card p {
+    margin: 10px 0;
+
+    color: #555;
+}

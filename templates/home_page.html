@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Food Delivery</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='home.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <h2>Food Delivery</h2>
+
+    <div class="nav-links">
+
+        <a href="/home" class="active">
+            Home
+        </a>
+
+        <a href="/cart">
+            Cart
+        </a>
+
+        <a href="/profile">
+            Profile
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- PRODUCTS -->
+
+<div class="product-container">
+
+
+    {% for product in products %}
+
+    <div class="product-card">
+
+
+        <!-- IMAGE -->
+
+        <img src="{{ url_for('static', filename=product[3]) }}"
+             alt="{{ product[1] }}">
+
+
+        <!-- NAME -->
+
+        <h2>
+            {{ product[1] }}
+        </h2>
+
+
+        <!-- PRICE -->
+
+        <p class="price">
+            ₹{{ product[2] }}
+        </p>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="description">
+            {{ product[4] }}
+        </p>
+
+
+        <!-- CART BUTTONS -->
+
+        <div class="cart-actions">
+
+            <button class="add-cart"
+                    type="button"
+                    data-product-id="{{ product[0] }}"
+                    onclick="addToCart(this)">
+
+                Add to Cart 🛒
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+
+
+<script>
+
+
+// =========================
+// ADD TO CART
+// =========================
+
+async function addToCart(button) {
+
+
+    const productId = button.dataset.productId;
+
+
+    console.log("Product ID:", productId);
+
+
+    const response = await fetch("/add_to_cart", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type":
+            "application/x-www-form-urlencoded"
+        },
+
+        body:
+        "product_id=" +
+        encodeURIComponent(productId)
+
+    });
+
+
+    if (response.ok) {
+
+
+        // Add → View Cart
+
+        button.innerHTML = "View Cart 🛒";
+
+        button.classList.add("view-cart");
+
+
+        // View Cart click
+
+        button.onclick = function () {
+
+            window.location.href = "/cart";
+
+        };
+
+
+        // Create Remove button
+
+        const removeButton =
+            document.createElement("button");
+
+
+        removeButton.innerHTML = "Remove";
+
+
+        removeButton.classList.add("remove-btn");
+
+
+        button.parentElement.appendChild(
+            removeButton
+        );
+
+
+        // Remove click
+
+        removeButton.onclick = function () {
+
+            removeFromCart(
+                button,
+                removeButton,
+                productId
+            );
+
+        };
+
+    }
+
+}
+
+
+
+// =========================
+// REMOVE FROM CART
+// =========================
+
+async function removeFromCart(
+    button,
+    removeButton,
+    productId
+) {
+
+
+    const response = await fetch(
+        "/remove_from_cart",
+        {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                "application/x-www-form-urlencoded"
+            },
+
+            body:
+            "product_id=" +
+            encodeURIComponent(productId)
+
+        }
+    );
+
+
+    if (response.ok) {
+
+
+        // Remove Remove button
+
+        removeButton.remove();
+
+
+        // View Cart → Add Cart
+
+        button.innerHTML =
+            "Add to Cart 🛒";
+
+
+        button.classList.remove(
+            "view-cart"
+        );
+
+
+        // Add click again
+
+        button.onclick = function () {
+
+            addToCart(button);
+
+        };
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='placeorder.css') }}">
+
+</head>
+<h2>Delivery Details</h2>
+
+<form action="/place_order" method="POST">
+
+    <label>Name</label>
+
+    <input type="text"
+           name="name"
+           value="{{ user.name or '' }}"
+           required>
+
+
+    <label>Phone</label>
+
+    <input type="text"
+           name="phone"
+           value="{{ user.phone or '' }}"
+           placeholder="Enter phone number"
+           required>
+
+
+    <label>Address</label>
+
+    <textarea name="address"
+              placeholder="Enter delivery address"
+              required>{{ user.address or '' }}</textarea>
+
+
+    <h3>Payment Method</h3>
+
+    <label>
+        <input type="radio"
+               name="payment_method"
+               value="Cash on Delivery"
+               checked>
+
+        Cash on Delivery
+    </label>
+
+
+    <br><br>
+
+    <button type="submit">
+        Place Order
+    </button>
+
+</form>

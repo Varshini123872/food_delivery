@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* =========================
+   CHECKOUT CONTAINER
+========================= */
+
+form {
+    width: 100%;
+    max-width: 500px;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+h2 {
+    position: absolute;
+
+    top: 50px;
+
+    font-size: 28px;
+
+    color: #333;
+
+    text-align: center;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+label {
+    display: block;
+
+    margin-top: 18px;
+    margin-bottom: 7px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input[type="text"],
+textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #ff6b00;
+
+    box-shadow: 0 0 5px rgba(255, 107, 0, 0.25);
+}
+
+
+/* =========================
+   ADDRESS
+========================= */
+
+textarea {
+    height: 100px;
+
+    resize: vertical;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================
+   PAYMENT HEADING
+========================= */
+
+h3 {
+    margin-top: 25px;
+
+    margin-bottom: 10px;
+
+    color: #333;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   PAYMENT RADIO
+========================= */
+
+label:has(input[type="radio"]) {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 5px;
+
+    font-weight: normal;
+
+    cursor: pointer;
+}
+
+
+input[type="radio"] {
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   PLACE ORDER BUTTON
+========================= */
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #ff6b00;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+button:hover {
+    background: #e85d00;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px;
+    }
+
+    form {
+        padding: 25px;
+    }
+
+    h2 {
+        position: static;
+
+        margin-bottom: 20px;
+
+        font-size: 24px;
+    }
+}

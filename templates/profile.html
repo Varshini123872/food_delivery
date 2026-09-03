@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>My Profile</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='profile.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <h2>Food Delivery</h2>
+
+    <div class="nav-links">
+
+        <a href="/home">
+            Home
+        </a>
+
+        <a href="/cart">
+            Cart
+        </a>
+
+        <a href="/profile"
+           class="active">
+
+            Profile
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     PROFILE CONTAINER
+========================= -->
+
+<div class="profile-container">
+
+    <h1>
+        My Profile
+    </h1>
+
+
+    <!-- =========================
+         SUCCESS MESSAGE
+    ========================= -->
+
+    <div class="success-message"
+         id="successMessage">
+
+        ✓ Profile updated successfully!
+
+    </div>
+
+
+
+    <!-- =========================
+         PROFILE WRAPPER
+    ========================= -->
+
+    <div class="profile-wrapper">
+
+
+        <!-- =========================
+             LEFT SIDE
+        ========================= -->
+
+        <div class="profile-left">
+
+
+            <!-- Profile Circle -->
+
+            <div class="profile-image">
+
+                🍔
+
+            </div>
+
+
+
+            <!-- User Name -->
+
+            <h2 id="displayName">
+
+                {{ profile.name }}
+
+            </h2>
+
+
+
+            <!-- Description -->
+
+            <p>
+
+                Food Lover 🍔
+
+            </p>
+
+
+
+            <!-- =========================
+                 PROFILE MENU
+            ========================= -->
+
+            <div class="profile-menu">
+
+
+                <!-- My Orders -->
+
+                <a href="{{ url_for('my_orders') }}"
+                   class="orders-link">
+
+                    📦 My Orders
+
+                </a>
+
+
+
+                <!-- Logout -->
+
+                <a href="/logout"
+                   class="logout-link">
+
+                    🚪 Logout
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT SIDE
+        ========================= -->
+
+        <div class="profile-right">
+
+
+            <!-- =========================
+                 HEADER
+            ========================= -->
+
+            <div class="profile-header">
+
+
+                <h2>
+
+                    Personal Information
+
+                </h2>
+
+
+
+                <button
+                    class="edit-btn"
+                    onclick="editProfile()">
+
+                    Edit
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 PROFILE DETAILS
+            ========================= -->
+
+            <div class="profile-details"
+                 id="profileDetails">
+
+
+                <!-- =========================
+                     NAME
+                ========================= -->
+
+                <div class="detail-box">
+
+
+                    <span>
+
+                        Name
+
+                    </span>
+
+
+                    <strong id="nameText">
+
+                        {{ profile.name }}
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     PHONE
+                ========================= -->
+
+                <div class="detail-box">
+
+
+                    <span>
+
+                        Phone Number
+
+                    </span>
+
+
+                    <strong id="phoneText">
+
+                        {{ profile.phone or '' }}
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     EMAIL
+                ========================= -->
+
+                <div class="detail-box">
+
+
+                    <span>
+
+                        Email
+
+                    </span>
+
+
+                    <strong id="emailText">
+
+                        {{ profile.email }}
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     ALTERNATIVE NUMBER
+                ========================= -->
+
+                <div class="detail-box">
+
+
+                    <span>
+
+                        Alternative Number
+
+                    </span>
+
+
+                    <strong id="alternativeText">
+
+                        {{ profile.alternative_number or '' }}
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     ADDRESS
+                ========================= -->
+
+                <div class="detail-box address-box">
+
+
+                    <span>
+
+                        Address
+
+                    </span>
+
+
+                    <strong id="addressText">
+
+                        {{ profile.address or '' }}
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================
+                 EDIT PROFILE
+            ========================= -->
+
+            <div class="edit-card"
+                 id="editCard">
+
+
+                <h2>
+
+                    Edit Profile
+
+                </h2>
+
+
+
+                <!-- =========================
+                     NAME
+                ========================= -->
+
+                <label>
+
+                    Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="nameInput"
+                >
+
+
+
+                <!-- =========================
+                     PHONE
+                ========================= -->
+
+                <label>
+
+                    Phone Number
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="phoneInput"
+                >
+
+
+
+                <!-- =========================
+                     EMAIL
+                ========================= -->
+
+                <label>
+
+                    Email
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="emailInput"
+                    value="{{ profile.email }}"
+                    readonly
+                >
+
+
+
+                <!-- =========================
+                     ALTERNATIVE NUMBER
+                ========================= -->
+
+                <label>
+
+                    Alternative Number
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="alternativeInput"
+                >
+
+
+
+                <!-- =========================
+                     ADDRESS
+                ========================= -->
+
+                <label>
+
+                    Address
+
+                </label>
+
+
+                <textarea
+                    id="addressInput"
+                ></textarea>
+
+
+
+                <!-- =========================
+                     BUTTONS
+                ========================= -->
+
+                <div class="buttons">
+
+
+                    <!-- SAVE -->
+
+                    <button
+                        class="save-btn"
+                        onclick="saveProfile()">
+
+                        Save Changes
+
+                    </button>
+
+
+
+                    <!-- CANCEL -->
+
+                    <button
+                        class="cancel-btn"
+                        onclick="cancelEdit()">
+
+                        Cancel
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+// =========================
+// EDIT PROFILE
+// =========================
+
+function editProfile() {
+
+
+    // Name
+
+    document.getElementById(
+        "nameInput"
+    ).value =
+        document.getElementById(
+            "nameText"
+        ).innerText.trim();
+
+
+
+    // Phone
+
+    document.getElementById(
+        "phoneInput"
+    ).value =
+        document.getElementById(
+            "phoneText"
+        ).innerText.trim();
+
+
+
+    // Email
+
+    document.getElementById(
+        "emailInput"
+    ).value =
+        document.getElementById(
+            "emailText"
+        ).innerText.trim();
+
+
+
+    // Alternative Number
+
+    document.getElementById(
+        "alternativeInput"
+    ).value =
+        document.getElementById(
+            "alternativeText"
+        ).innerText.trim();
+
+
+
+    // Address
+
+    document.getElementById(
+        "addressInput"
+    ).value =
+        document.getElementById(
+            "addressText"
+        ).innerText.trim();
+
+
+
+    // Hide Profile Details
+
+    document.getElementById(
+        "profileDetails"
+    ).style.display = "none";
+
+
+
+    // Show Edit Card
+
+    document.getElementById(
+        "editCard"
+    ).style.display = "block";
+
+}
+
+
+
+// =========================
+// SAVE PROFILE
+// =========================
+
+async function saveProfile() {
+
+
+    // Get Name
+
+    const name =
+        document.getElementById(
+            "nameInput"
+        ).value.trim();
+
+
+
+    // Get Phone
+
+    const phone =
+        document.getElementById(
+            "phoneInput"
+        ).value.trim();
+
+
+
+    // Get Alternative Number
+
+    const alternative =
+        document.getElementById(
+            "alternativeInput"
+        ).value.trim();
+
+
+
+    // Get Address
+
+    const address =
+        document.getElementById(
+            "addressInput"
+        ).value.trim();
+
+
+
+    // Basic validation
+
+    if (name === "") {
+
+        alert("Name is required");
+
+        return;
+
+    }
+
+
+
+    try {
+
+
+        // =========================
+        // SEND TO FLASK
+        // =========================
+
+        const response = await fetch(
+            "/update_profile",
+            {
+
+                method: "POST",
+
+
+                headers: {
+
+                    "Content-Type":
+                    "application/x-www-form-urlencoded"
+
+                },
+
+
+                body:
+
+                    "name=" +
+                    encodeURIComponent(name) +
+
+                    "&phone=" +
+                    encodeURIComponent(phone) +
+
+                    "&alternative_number=" +
+                    encodeURIComponent(
+                        alternative
+                    ) +
+
+                    "&address=" +
+                    encodeURIComponent(
+                        address
+                    )
+
+            }
+        );
+
+
+
+        // =========================
+        // SUCCESS
+        // =========================
+
+        if (response.ok) {
+
+
+            // Update Name
+
+            document.getElementById(
+                "nameText"
+            ).innerText = name;
+
+
+
+            // Update Phone
+
+            document.getElementById(
+                "phoneText"
+            ).innerText = phone;
+
+
+
+            // Update Alternative Number
+
+            document.getElementById(
+                "alternativeText"
+            ).innerText = alternative;
+
+
+
+            // Update Address
+
+            document.getElementById(
+                "addressText"
+            ).innerText = address;
+
+
+
+            // Update Left Side Name
+
+            document.getElementById(
+                "displayName"
+            ).innerText = name;
+
+
+
+            // Hide Edit Card
+
+            document.getElementById(
+                "editCard"
+            ).style.display = "none";
+
+
+
+            // Show Profile Details
+
+            document.getElementById(
+                "profileDetails"
+            ).style.display = "grid";
+
+
+
+            // Show Success Message
+
+            document.getElementById(
+                "successMessage"
+            ).style.display = "block";
+
+
+
+            // Hide Success Message
+
+            setTimeout(function() {
+
+
+                document.getElementById(
+                    "successMessage"
+                ).style.display = "none";
+
+
+            }, 3000);
+
+
+        }
+
+
+        // =========================
+        // ERROR
+        // =========================
+
+        else {
+
+
+            alert(
+                "Profile update failed"
+            );
+
+
+        }
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(error);
+
+
+        alert(
+            "Something went wrong"
+        );
+
+
+    }
+
+}
+
+
+
+// =========================
+// CANCEL EDIT
+// =========================
+
+function cancelEdit() {
+
+
+    // Hide Edit Card
+
+    document.getElementById(
+        "editCard"
+    ).style.display = "none";
+
+
+
+    // Show Profile Details
+
+    document.getElementById(
+        "profileDetails"
+    ).style.display = "grid";
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+
